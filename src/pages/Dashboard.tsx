@@ -8,7 +8,12 @@ import { supabase } from "@/integrations/supabase/client"
 import { useToast } from "@/hooks/use-toast"
 import { User, LogOut, MapPin, Trash2, Navigation, RefreshCw } from "lucide-react"
 import type { User as SupabaseUser } from "@supabase/supabase-js"
-import type { google } from "google-maps"
+
+declare global {
+  interface Window {
+    google: any;
+  }
+}
 
 const Dashboard = () => {
   const [user, setUser] = useState<SupabaseUser | null>(null)
@@ -22,8 +27,8 @@ const Dashboard = () => {
   const [suggestions, setSuggestions] = useState<any[]>([])
 
   const mapRef = useRef<HTMLDivElement>(null)
-  const mapInstance = useRef<google.maps.Map | null>(null)
-  const markerRef = useRef<google.maps.Marker | null>(null)
+  const mapInstance = useRef<any>(null)
+  const markerRef = useRef<any>(null)
 
   const navigate = useNavigate()
   const { toast } = useToast()

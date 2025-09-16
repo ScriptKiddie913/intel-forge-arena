@@ -10,174 +10,52 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "12.2.12 (cd3cf9e)"
+    PostgrestVersion: "13.0.5"
   }
   public: {
     Tables: {
-      challenges: {
+      profiles: {
         Row: {
-          category: string
-          created_at: string | null
-          description: string
-          difficulty: string
-          download_url: string | null
-          flag: string
+          avatar_url: string | null
+          created_at: string
+          date_of_birth: string | null
+          full_name: string | null
           id: string
-          is_active: boolean | null
-          points: number
-          title: string
+          phone: string | null
+          preferred_destinations: string[] | null
+          travel_interests: string[] | null
+          updated_at: string
+          user_id: string
         }
         Insert: {
-          category: string
-          created_at?: string | null
-          description: string
-          difficulty: string
-          download_url?: string | null
-          flag: string
+          avatar_url?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          full_name?: string | null
           id?: string
-          is_active?: boolean | null
-          points: number
-          title: string
+          phone?: string | null
+          preferred_destinations?: string[] | null
+          travel_interests?: string[] | null
+          updated_at?: string
+          user_id: string
         }
         Update: {
-          category?: string
-          created_at?: string | null
-          description?: string
-          difficulty?: string
-          download_url?: string | null
-          flag?: string
+          avatar_url?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          full_name?: string | null
           id?: string
-          is_active?: boolean | null
-          points?: number
-          title?: string
-        }
-        Relationships: []
-      }
-      ctf_settings: {
-        Row: {
-          created_at: string | null
-          end_time: string
-          event_name: string | null
-          id: number
-          is_active: boolean | null
-          start_time: string
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          end_time: string
-          event_name?: string | null
-          id?: number
-          is_active?: boolean | null
-          start_time: string
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          end_time?: string
-          event_name?: string | null
-          id?: number
-          is_active?: boolean | null
-          start_time?: string
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
-      user_submissions: {
-        Row: {
-          challenge_id: string | null
-          id: string
-          is_correct: boolean
-          submitted_at: string | null
-          submitted_flag: string
-          user_id: string | null
-        }
-        Insert: {
-          challenge_id?: string | null
-          id?: string
-          is_correct: boolean
-          submitted_at?: string | null
-          submitted_flag: string
-          user_id?: string | null
-        }
-        Update: {
-          challenge_id?: string | null
-          id?: string
-          is_correct?: boolean
-          submitted_at?: string | null
-          submitted_flag?: string
-          user_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "user_submissions_challenge_id_fkey"
-            columns: ["challenge_id"]
-            isOneToOne: false
-            referencedRelation: "challenges"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "user_submissions_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      users: {
-        Row: {
-          banned_at: string | null
-          banned_reason: string | null
-          created_at: string | null
-          email: string
-          id: string
-          is_banned: boolean | null
-          password_hash: string
-          points: number | null
-          role: string | null
-          updated_at: string | null
-          username: string
-        }
-        Insert: {
-          banned_at?: string | null
-          banned_reason?: string | null
-          created_at?: string | null
-          email: string
-          id?: string
-          is_banned?: boolean | null
-          password_hash: string
-          points?: number | null
-          role?: string | null
-          updated_at?: string | null
-          username: string
-        }
-        Update: {
-          banned_at?: string | null
-          banned_reason?: string | null
-          created_at?: string | null
-          email?: string
-          id?: string
-          is_banned?: boolean | null
-          password_hash?: string
-          points?: number | null
-          role?: string | null
-          updated_at?: string | null
-          username?: string
+          phone?: string | null
+          preferred_destinations?: string[] | null
+          travel_interests?: string[] | null
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
     }
     Views: {
-      leaderboard_view: {
-        Row: {
-          created_at: string | null
-          points: number | null
-          rank: number | null
-          username: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       [_ in never]: never
